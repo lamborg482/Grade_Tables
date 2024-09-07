@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% import 'base.html' as macro %}.
+
+{% block content %}
+<title>Регистрация</title>
+{% endblock %}
+
+{% block menu_log %}
+<li><a href="/main_noreg" >Главная</a></li>
+<li><a href="/login">Войти</a></li> 
+{% endblock %}
+
+{% block content_c %}
+<div class="login-container">
+    <div class="login">
+        <form action="{{ url_for('register') }}" method="post">
+            <input type="text" name="username" placeholder="Имя Пользователя: ">
+            <input type="password" name="password" placeholder="Пароль: ">
+            <input type="Email" name="email" placeholder="Электронная почта: ">
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

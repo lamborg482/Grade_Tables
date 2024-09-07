@@ -1,0 +1,153 @@
+
+{% extends "base.html" %}
+{% import 'base.html' as macro %}.
+
+{% block content %}
+<title>Изменить Расписание</title>
+{% endblock %}
+
+{% block menu_log %}
+<li><a href="/main_mod" >Главная</a></li>
+<li><a href="/exit">Выйти</a></li>  
+{% endblock %}
+
+{% block content_c %}
+<body>
+    <div class='all_td'>
+        <div class='h2_log'>
+            <h2>Расписание Группы: {{ search }}</h2>
+        </div>
+        <div class='all_table'>
+            <div class='but_post'>
+                <button onclick="showTable('table4')">{{ post[3][0] }}</button>
+                <button onclick="showTable('table5')">{{ post[4][0] }}</button>
+                <button onclick="showTable('table2')">{{ post[1][0] }}</button>
+                <button onclick="showTable('table1')">{{ post[0][0] }}</button>
+                <button onclick="showTable('table3')">{{ post[2][0] }}</button>
+            </div>
+            <div class='table_div_1'>
+                <table id="table1" class="table">
+                    <thead>
+                        <tr>
+                            <th>id</th> 
+                            <th>time</th>
+                            <th>object</th>
+                            <th>room</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in rows1 %}
+                        <tr>
+                            <td>{{ row[0] }}</td>
+                            <td>{{ row[1] }}</td>
+                            <td>{{ row[2] }}</td>
+                            <td>{{ row[3] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <table id="table2" class="table">
+                    <thead>
+                        <tr>
+                            <th>id</th> 
+                            <th>time</th>
+                            <th>object</th>
+                            <th>room</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in rows2 %}
+                        <tr>
+                            <td>{{ row[0] }}</td>
+                            <td>{{ row[1] }}</td>
+                            <td>{{ row[2] }}</td>
+                            <td>{{ row[3] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <table id="table3" class="table">
+                    <thead>
+                        <tr>
+                            <th>id</th> 
+                            <th>time</th>
+                            <th>object</th>
+                            <th>room</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in rows3 %}
+                        <tr>
+                            <td>{{ row[0] }}</td>
+                            <td>{{ row[1] }}</td>
+                            <td>{{ row[2] }}</td>
+                            <td>{{ row[3] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <table id="table4" class="table">
+                    <thead>
+                        <tr>
+                            <th>id</th> 
+                            <th>time</th>
+                            <th>object</th>
+                            <th>room</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in rows4 %}
+                        <tr>
+                            <td>{{ row[0] }}</td>
+                            <td>{{ row[1] }}</td>
+                            <td>{{ row[2] }}</td>
+                            <td>{{ row[3] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <table id="table5" class="table">
+                    <thead>
+                        <tr>
+                            <th>id</th> 
+                            <th>time</th>
+                            <th>object</th>
+                            <th>room</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in rows5 %}
+                        <tr>
+                            <td>{{ row[0] }}</td>
+                            <td>{{ row[1] }}</td>
+                            <td>{{ row[2] }}</td>
+                            <td>{{ row[3] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showTable(tableId) {
+            var tables = document.querySelectorAll('.table');
+            tables.forEach(function(table) {
+                table.style.display = 'none'; 
+            });
+            document.getElementById(tableId).style.display = 'table'; 
+        }
+    </script>
+</body>
+{% endblock %}
+
+
+{% block search %}
+<div class='search'>
+    <header>
+        <form name="search" action="{{ url_for('all_schedule') }}" method="get">
+            <input type="text" name="search" placeholder="Поиск: по_1_23"><button type="submit">Найти</button>
+        </form>
+    </header>
+</div>
+{% endblock %}

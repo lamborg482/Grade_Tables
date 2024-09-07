@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% import 'base.html' as macro %}.
+
+{% block content %}
+<title>Grade_Tables</title>
+{% endblock %}
+
+{% block menu_log %}
+<li><a href="/main_reg" >Главная</a></li>
+<li><a href="/exit">Выйти</a></li> 
+{% endblock %}
+
+{% block content_c %}
+<table class='tb_edit'>
+    <thead>
+        <tr>
+            <th>id</th> 
+            <th>time</th>
+            <th>object</th>
+            <th>room</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in rows %}
+        <tr data-id="{{ row[0] }}">
+            <td contenteditable="true">{{ row[1] }}</td>
+            <td contenteditable="true">{{ row[2] }}</td>
+            <td contenteditable="true">{{ row[3] }}</td>
+            <td contenteditable="true">{{ row[4] }}</td>
+            <td contenteditable="true">{{ row[5] }}</td>
+            <td>
+                <button oneclick="saveRow({{ row[0] }})">Сохранить</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+{% block search %}
+<div class='search'>
+    <header>
+        <form name="search" action="{{ url_for('all_edit_schedule') }}" method="post">
+            <input type="text" name="search" placeholder="Поиск: по_1_23"><button type="submit">Найти</button>
+        </form>
+    </header>
+</div>
+{% endblock %}
+
+<script>
+    function saveRow(id) {
+        const row = document.querySelector(`tr[data-id='${id}']`);
+        const time = row.querySelector('td:nth-child(2)').innerText;
+        const object = row.querySelector('td:nth-child(3)').innerText;
+        const room = row.querySelector('td:nth-child(4)').innerText;
+
+        fetch('/save', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id, time, object, room })
+        }).then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Data saved successfully!');
+            } else {
+                alert('Error saving data.');
+            }
+        });
+    }
+
+</script>

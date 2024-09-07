@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+{% import 'base.html' as macro %}.
+
+{% block content %}
+<title>Изменить Расписание</title>
+{% endblock %}
+
+{% block menu_log %}
+<li><a href="/main_mod" >Главная</a></li>
+<li><a href="/exit">Выйти</a></li>  
+{% endblock %}
+
+{% block content_c %}
+<body>
+    <div class='all_td'>
+        <div class='h2_log'>
+            <h2>Расписание Группы: {{ search }}</h2>
+        </div>
+        <div class='all_table'>
+            <div class='but_post'>
+                <button onclick="showTable('по1_23_пн')">Понедельник:</button>
+                <button onclick="showTable('по1_23_вт')">Вторник:</button>
+                <button onclick="showTable('по1_23_ср')">Среда:</button>
+                <button onclick="showTable('по1_23_чт')">Четверг:</button>
+                <button onclick="showTable('по1_23_пт')">Пятница:</button>
+            </div>
+            <div class='table_div' data-table-id="по1_23_пн">
+                <input type="hidden"  class="currentTable" value="tablel_1">
+                <table id="по1_23_пн" class="table_1">
+                    <thead>
+                        <tr>
+                            <th>id</th> 
+                            <th>time</th>
+                            <th>object</th>
+                            <th>room</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in rows1 %}
+                        <tr data-id="{{ row[0] }}">
+                            <td>{{ row[0] }}</td>
+                            <td contenteditable="true" id="time-{{ row[0] }}">{{ row[1] }}</td>
+                            <td contenteditable="true" id="object-{{ row[0] }}">{{ row[2] }}</td>
+                            <td contenteditable="true" id="room-{{ row[0] }}">{{ row[3] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <button class="save_butt" id='по1_23_пн' onclick="updateCurrentTable('по1_23_пн');saveTable('по1_23_пн')">Сохранить</button>
+            </div>
+            <div class='table_div' data-table-id="по1_23_вт">
+                <input type="hidden" class="currentTable" value="tablel_2">
+                <table id="по1_23_вт" class="table_1">
+                    <thead>
+                        <tr>
+                            <th>id</th> 
+                            <th>time</th>
+                            <th>object</th>
+                            <th>room</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in rows2 %}
+                        <tr data-id="{{ row[0] }}">
+                            <td>{{ row[0] }}</td>
+                            <td contenteditable="true" id="time-{{ row[0] }}">{{ row[1] }}</td>
+                            <td contenteditable="true" id="object-{{ row[0] }}">{{ row[2] }}</td>
+                            <td contenteditable="true" id="room-{{ row[0] }}">{{ row[3] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <button class="save_butt" id='по1_23_вт' onclick=" updateCurrentTable('по1_23_вт');saveTable('по1_23_вт')">Сохранить</button>
+            </div>
+            <div class='table_div' data-table-id="по1_23_ср">
+                <input type="hidden" class="currentTable" value="tablel_3">
+                <table id="по1_23_ср" class="table_1">
+                    <thead>
+                        <tr>
+                            <th>id</th> 
+                            <th>time</th>
+                            <th>object</th>
+                            <th>room</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in rows3 %}
+                        <tr data-id="{{ row[0] }}">
+                            <td>{{ row[0] }}</td>
+                            <td contenteditable="true" id="time-{{ row[0] }}">{{ row[1] }}</td>
+                            <td contenteditable="true" id="object-{{ row[0] }}">{{ row[2] }}</td>
+                            <td contenteditable="true" id="room-{{ row[0] }}">{{ row[3] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <button class="save_butt" id='по1_23_ср' onclick="updateCurrentTable('по1_23_ср');saveTable('по1_23_ср')">Сохранить</button>
+            </div>
+            <div class='table_div' data-table-id="по1_23_чт">
+                <input type="hidden" class="currentTable" value="tablel_4">
+                <table id="по1_23_чт" class="table_1">
+                    <thead>
+                        <tr>
+                            <th>id</th> 
+                            <th>time</th>
+                            <th>object</th>
+                            <th>room</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in rows4 %}
+                        <tr data-id="{{ row[0] }}">
+                            <td>{{ row[0] }}</td>
+                            <td contenteditable="true" id="time-{{ row[0] }}">{{ row[1] }}</td>
+                            <td contenteditable="true" id="object-{{ row[0] }}">{{ row[2] }}</td>
+                            <td contenteditable="true" id="room-{{ row[0] }}">{{ row[3] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <button class="save_butt" id='по1_23_чт' onclick="updateCurrentTable('по1_23_чт');saveTable('по1_23_чт')">Сохранить</button>
+            </div>
+            <div class='table_div' data-table-id="по1_23_пт">
+                <input type="hidden" class="currentTable" value="tablel_5">
+                <table id="по1_23_пт" class="table_1">
+                    <thead>
+                        <tr>
+                            <th>id</th> 
+                            <th>time</th>
+                            <th>object</th>
+                            <th>room</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in rows5 %}
+                        <tr data-id="{{ row[0] }}">
+                            <td>{{ row[0] }}</td>
+                            <td contenteditable="true" id="time-{{ row[0] }}">{{ row[1] }}</td>
+                            <td contenteditable="true" id="object-{{ row[0] }}">{{ row[2] }}</td>
+                            <td contenteditable="true" id="room-{{ row[0] }}">{{ row[3] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <button class="save_butt" id='по1_23_пт' onclick="updateCurrentTable('по1_23_пт');saveTable('по1_23_пт')">Сохранить</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showTable(tableId) {
+            console.log("showTable called for: " + tableId);
+            document.querySelectorAll('.table_div').forEach(div => {
+                div.style.display = 'none';
+            });
+            document.querySelector(`[data-table-id="${tableId}"]`).style.display = 'block';
+        }
+    
+        function updateCurrentTable(tableId) {
+            console.log("updateCurrentTable called for: " + tableId);
+            document.querySelector('.currentTable').value = tableId;
+        }
+    
+        function saveTable(tableId) {
+            console.log("saveTable called for: " + tableId);
+            let table = document.getElementById(tableId);
+            let data = [];
+            table.querySelectorAll('tbody tr').forEach(row => {
+                let rowData = {
+                    id: row.dataset.id,
+                    time: row.querySelector(`#time-${row.dataset.id}`).innerText,
+                    object: row.querySelector(`#object-${row.dataset.id}`).innerText,
+                    room: row.querySelector(`#room-${row.dataset.id}`).innerText
+                };
+                data.push(rowData);
+            });
+            console.log("Data to be sent:", data);
+            fetch('/save_she', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ table: tableId, data: data })
+            }).then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            }).then(result => {
+                console.log("Server response:", result);
+                if (result.success) {
+                    alert('Data saved successfully!');
+                } else {
+                    alert('Error saving data: ' + result.error);
+                }
+            }).catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+        }
+    </script>
+    
+{% endblock %}
+
+
+{% block search %}
+<div class='search'>
+    <header>
+        <form name="search" action="{{ url_for('all_edit_schedule') }}" method="get">
+            <input type="text" name="search" placeholder="Поиск: по_1_23"><button type="submit">Найти</button>
+        </form>
+    </header>
+</div>
+{% endblock %}

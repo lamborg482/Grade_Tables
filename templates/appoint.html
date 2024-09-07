@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% import 'base.html' as macro %}
+
+{% block content %}
+<title>Grade Tables</title>
+{% endblock %}
+
+{% block menu_log %}
+<li><a href="/main_adm" >Главная</a></li>
+<li><a href="/exit">Выйти</a></li>  
+{% endblock %}
+
+{% block content_c %}
+<body>
+    <div class='all_td'>
+        <div class='h2_log'>
+            <h2>Назначить Роль: </h2>
+        </div>
+        <div class='all_table'>
+            <div class='table_div_ap' data-table-id="table_ap">
+                <input type="hidden" class="currentTable" value="table_ap">
+                <table id="users" class="table_1">
+                    <thead>
+                        <tr>
+                            <th>id</th> 
+                            <th>username</th>
+                            <th>email</th>
+                            <th>role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in post %}
+                        <tr data-id="{{ row[0] }}">
+                            <td>{{ row[0] }}</td>
+                            <td contenteditable="true" id="username-{{ row[0] }}">{{ row[1] }}</td>
+                            <td contenteditable="true" id="email-{{ row[0] }}">{{ row[3] }}</td>
+                            <td contenteditable="true" id="role-{{ row[0] }}">{{ row[4] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <button class="save_butt" id='users' onclick="saveTable('users')">Сохранить</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function saveTable(tableId) {
+            console.log("saveTable called for: " + tableId);
+            let table = document.getElementById(tableId);
+            let data = [];
+            table.querySelectorAll('tbody tr').forEach(row => {
+                let rowData = {
+                    id: row.dataset.id,
+                    username: row.querySelector(`#username-${row.dataset.id}`).innerText,
+                    email: row.querySelector(`#email-${row.dataset.id}`).innerText,
+                    role: row.querySelector(`#role-${row.dataset.id}`).innerText
+                };
+                data.push(rowData);
+            });
+            console.log("Data to be sent:", data);
+        
+            fetch('/save_use', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ table: tableId, data: data })
+            }).then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            }).then(result => {
+                console.log("Server response:", result);
+                if (result.success) {
+                    alert('Data saved successfully!');
+                } else {
+                    alert('Error saving data: ' + result.error);
+                }
+            }).catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+        }        
+    </script>
+</body>
+{% endblock %}
+
+{% block search %}
+<div class='search'>
+    <header>
+        <form name="search" action="{{ url_for('all_edit_schedule') }}" method="post">
+            <input type="text" name="search" placeholder="Поиск: по_1_23"><button type="submit">Найти</button>
+        </form>
+    </header>
+</div>
+{% endblock %}

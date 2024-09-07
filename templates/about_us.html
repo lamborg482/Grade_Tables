@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% import 'base.html' as macro %}
+
+{% block content %}
+<title>О Нас</title>
+{% endblock %}
+
+{% block menu_log %}
+<li><a href="/main_reg" >Главная</a></li>
+<li><a href="/main_reg">Назад</a></li>  
+<li><a href="/exit">Выйти</a></li>  
+{% endblock %}
+
+{% block content_c %}
+<body>
+    <div class='p_2'>
+        <h1>О нас</h1>
+    </div>
+    <div class='p_1'>
+        <p>
+            Страница «О нас» должна содержать достаточно информации, 
+            чтобы клиенты действительно узнали вас, когда закончат ее читать. 
+            Это не значит, что нужно писать эссе со всеми фактами, которые придут на ум. 
+            Предоставьте достаточно информации, чтобы люди почувствовали, что могут вам доверять.
+        </p>
+    </div>
+    <div class='p_3'>
+        <p>
+            Донецкий Техникум Промышленной Автоматики имени А.В.Захарченко
+        </p>
+    </div>
+</body>
+{% endblock %}
+
+{% block search %}
+<div class='search'>
+    <header>
+        <form name="search" action="{{ url_for('all_schedule') }}" method="post">
+            <input type="text" name="search" placeholder="Поиск: по_1_23"><button type="submit">Найти</button>
+        </form>
+    </header>
+</div>
+{% endblock %}

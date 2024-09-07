@@ -1,0 +1,54 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        {% block content %}{% endblock  %}
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{  url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class='wrapper'>
+            <div class='header'>
+                    <h1>Grade_Tables</h1>
+                <div class="menu">
+                    <nav>
+                        <ul class="top_menu">
+                            {% block menu_log %}{% endblock %}
+                        </ul>
+                    </nav>
+                </div>
+                {% block search %}
+                {% endblock %}
+            </div>
+            <div class='content'>
+                {% block content_c %}{% endblock %}
+            </div>
+            <footer>
+                <div id='footer'>
+                    <div id="logo">
+                        <h1>Grade_Tables</h1>
+                    </div>
+                    <div id="social">
+                        <a href="https://t.me/Timur_Morozov_1" class="social_icon">
+                            <img src="/static/images/telega_icon.svg" alt="Telegram"/>
+                        </a>
+                        <a href="https://discord.gg/AzQfyedM5s" class="social_icon">
+                            <img src="/static/images/disc_icon.svg" alt="Discord"/>
+                        </a>
+                        <a href="https://vk.com/id823534743" class="social_icon">
+                            <img src="/static/images/vk_icon.svg" alt="VK"/>
+                        </a>
+                        <a href="https://www.whatsapp.com/" class="social_icon">
+                            <img src="/static/images/what_icon.svg" alt="WhatsApp"/>
+                        </a>
+                    </div>
+                    <div class="inst">
+                        <h3>Донецкий Техникум Промышленной Автоматики имени А.В.Захарченко</h3>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% import 'base.html' as macro %}.
+
+{% block content %}
+<title>Grade_Tables</title>
+{% endblock %}
+
+{% block menu_log %}
+<li><a href="/main_reg" >Главная</a></li>
+<li class="active"><a href="/about_us" >О Нас</a></li>
+<li><a href="/exit">Выйти</a></li> 
+{% endblock %}
+
+{% block content_c %}
+<section>
+    <blockquote>
+        
+        <div class="tutor">
+            <h2>
+                Введите в поиск свою группу что бы узнать своих оценки.
+            </h2>
+        </div>
+
+        <div class="c1">
+        <h2>
+            "Важно не количество знаний, а качество их. 
+            Можно знать очень многое, не зная самого нужного."
+        </h2>
+        <h3>Л. Толстой</h3>
+        </div>
+        
+        <div class="c2">
+            <h2>
+                "Образование – то, что остается после того, когда забывается все, чему учили."
+            </h2>
+            <h3>А. Эйнштейн</h3>
+        </div>
+
+        <div class="c3">
+            <h2>
+                "Я никогда не позволял, чтобы мои школьные занятия мешали моему образованию."
+            </h2>
+            <h3>Марк Твен</h3>
+        </div>
+
+    </blockquote>
+</section>
+
+{% endblock %}
+
+{% block search %}
+<div class='search'>
+    <header>
+        <form name="search" action="{{ url_for('all_schedule') }}" method="post">
+            <input type="text" name="search" placeholder="Поиск: по_1_23"><button type="submit">Найти</button>
+        </form>
+    </header>
+</div>
+{% endblock %}
